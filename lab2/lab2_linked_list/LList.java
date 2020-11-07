@@ -8,20 +8,20 @@ public class LList<T>{
     private LListNode<T> last_element;
     private int list_length;
 
+    //пустой конструктор
     public LList(){};
 
-    public LList(LListNode<T> fe, LListNode<T> se) {
+    //инициализирующий конструктор
+    public LList(LListNode<T> fe, LListNode<T> se, int len=2) {
         list_length   = 2;
         first_element = fe;
         last_element  = se;
 
         first_element.setNextNode(last_element);
     }
-
+    //конструктор копирования
     public LList(LList<T> another_list){
-        first_element = another_list.first_element;
-        last_element = another_list.last_element;
-        list_length = another_list.list_length;
+        this(another_list.first_element, another_list.last_element, another_list.list_length);
     }
 
     public void setFirstNode(LListNode<T> node){
