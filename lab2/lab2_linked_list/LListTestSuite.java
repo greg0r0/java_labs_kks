@@ -29,5 +29,5 @@ public class LListTestSuite
         System.out.println(String.format("Amount of tests: %d  Passage: %.2f%%", tests_num, ((double)succ_test/tests_num)*100));
     }
     //тесты выгоядят отвратно, нужно продумать дизайн. 
-    
+    //some tests here
 }

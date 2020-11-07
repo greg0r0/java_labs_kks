@@ -28,12 +28,29 @@ public class LList<T>{
         node.setNextNode(first_element);
         first_element = node;
     }
+    public void setLastNode(LListNode<T> node){
+        last_element.setNextNode(node);
+        node.setNextNode(null);
+    }
+
+    public void deleteLastNode(){
+        LListNode<T> node = first_element;
+        while (node.getNextNode().getNextNode() != null) // у след ноды проверяем наличие след ноды 0-о
+        {
+            node = node.getNextNode();
+        }
+        node.setNextNode(null);
+    }
+
+
 
     private void out(LListNode<T> node){
         System.out.print( node.getData() );
         if (node.getNextNode() != null){
             System.out.print(" -> ");
             out(node.getNextNode());
+        } else {
+            System.out.println();
         }
     }
 
