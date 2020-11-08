@@ -27,6 +27,7 @@ public class LList<T>{
     public void addFirstNode(LListNode<T> node){
         node.setNextNode(first_element);
         first_element = node;
+        list_length++;
     }
 
     //Задать выходной элемент списка
@@ -44,7 +45,9 @@ public class LList<T>{
     //Удалить первый элемент списка
     public void deleteFirstNode(){
         first_element = first_element.getNextNode();
+        list_length--;
     }
+
     //удалить последний элемент списка
     public void deleteLastNode(){
         LListNode<T> node = first_element;
@@ -53,6 +56,7 @@ public class LList<T>{
             node = node.getNextNode();
         }
         node.setNextNode(null);
+        list_length--;
     }
 
     //Удаление элемента по значению
@@ -69,11 +73,12 @@ public class LList<T>{
                     node.setNextNode(null);
                 } else if (node == this.last_element){
                     lastNode.setNextNode(null);
+                    last_element = lastNode;
                 } else {
                     lastNode.setNextNode(node.getNextNode());
                     node.setNextNode(null); 
                 }
-
+                list_length--;
                 return;
             }
             lastNode = node;
@@ -86,15 +91,44 @@ public class LList<T>{
     public int getLength(){
         return this.list_length;
     }
+    public int extendedGetLength(){
+        int i = 0;
+        LListNode<T> node = first_element;
+        while (node!=null){
+            node = node.getNextNode();
+            i++;
+        }
+        return i;
+    }
 
     //удаление списка
     public void deleteList(){
         //боже, благослови Garbage Collector
         first_element = null;
         last_element = null;
+        list_length = 0;
     }
 
-    //DEBUG: вывод цепочки
+    //DEBUG: вывод цепочки, данных, etc
+    public T getLastData(){
+        return this.last_element.getData();
+    }
+
+    public T getFirstData(){
+        return this.first_element.getData();
+    }
+
+    public T getData(int position) throws Exception{
+        if (position > list_length){
+            throw new Exception("Error: Index > list length");
+        }
+        LListNode<T> node = first_element;
+        for (int i = 0; i < position-1; i++){
+            node = node.getNextNode();
+        }
+        return node.getData();
+    }
+
     private void out(LListNode<T> node){
         System.out.print( node.getData() );
         if (node.getNextNode() != null){
