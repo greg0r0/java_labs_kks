@@ -9,6 +9,9 @@ public class LListNode<T>{
         data = _data;
         nextNode = _NextNode;
     }
+    public LListNode(LListNode<T> node){
+        this(node.getData(), node.getNextNode());
+    }
 
     public T getData(){
         return data;
