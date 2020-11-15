@@ -1,6 +1,6 @@
 #compile classes
-javac  ./lab2_linked_list/*.java 
+javac -Xlint:unchecked ./lab3_vector/*.java 
 #run main
 java ./main.java 
 #delete classes
-rm -rf ./lab2_linked_list/*.class
+rm -rf ./lab3_vector/*.class
