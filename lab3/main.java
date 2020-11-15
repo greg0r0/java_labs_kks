@@ -7,15 +7,22 @@ import lab3_vector.*;
 class Program{
     public static void main(String[] args){
         lab3_vector.Vector<Integer> vec = new lab3_vector.Vector<Integer>();
-        System.out.println(vec.getLen());
+        //System.out.println(vec.getLen());
         for (int i = 0; i<=5; i++){
             vec.push(i);
-            System.out.println(vec.getLen());
+            //System.out.println(vec.getLen());
+        }
+        vec.printrope();
+        try{
+            vec.insert(15, 3);
+            vec.printrope();
+        } catch (Exception ex){
+
         }
         try{
-            System.out.println(vec.pop());
-            System.out.println(vec.getLen());
-        } catch (Exception ex) {
+            vec.delete(3);
+            vec.printrope();
+        } catch (Exception ex){
 
         }
     }

@@ -70,5 +70,52 @@ public class Vector<T>{
 
     }
 
+    public void insert(T element, int index) throws Exception{
+        if (index > this.len || index < 0){
+            throw new Exception("Bad Index");
+        }
+
+        if (this.len == this.capacity){
+            resize();
+        }
+
+        len++;
+
+
+        for (int i = len-1; i > index; i--){
+            this.arr[i] = arr[i-1];
+        }
+
+
+        arr[index] = element;
+    }
+
+    public void delete(int index) throws Exception{
+        if (index > this.len || index < 0){
+            throw new Exception("Bad Index");
+        }
+
+        for (int i = index; i < len-1; i++){
+            this.arr[i] = arr[i+1];
+        }
+        len--;
+    }
+
+    public void clear(){
+         //lol just can't call Vector()
+        this.arr = (T[])new Object[1];
+        this.capacity = 1;
+        this.len = 0;
+    }
+
+    public void printrope(){
+        for (int i = 0; i < this.len; i++)
+        {
+            System.out.print(this.arr[i]);
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+
 
 }
