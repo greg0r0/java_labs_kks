@@ -44,4 +44,66 @@ public class BinaryTreeTestSuite {
             return false;
         }
     }
+
+    public static boolean TestGetter(){
+        try {
+            BinaryTree<Integer, Integer> bintree = new BinaryTree<>();
+
+            bintree.insert(10, 0);
+            assert bintree.get(10) == 0;
+
+            bintree.insert(11, 1);
+            bintree.insert(9, -1);
+            assert bintree.get(11) == 1 && bintree.get(9) == -1;
+
+            bintree.insert(10,3);   //replace head data
+            bintree.insert(11,4);
+            assert !(bintree.get(11) == 1) && bintree.get(10) == 3;
+
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    public static boolean TestInsertion(){
+        try {
+            BinaryTree<Integer, Integer> bintree = new BinaryTree<>();
+            
+            bintree.insert(10, 0);
+            assert bintree.getLen() == 1;
+
+            bintree.insert(11, 1);
+            bintree.insert(9, -1);
+            assert bintree.getLen() == 3;
+
+            bintree.insert(10,3);   //replace head data
+            bintree.insert(11,4);
+            assert bintree.getLen() == 3;
+
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+    public static boolean TestCleaning(){
+        try {
+            BinaryTree<Integer, Integer> bintree = new BinaryTree<>();
+
+            bintree.insert(10, 0);
+
+            bintree.insert(11, 1);
+            bintree.insert(9, -1);
+
+            bintree.clear();
+            assert bintree.getLen() == 0;
+
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+
 }

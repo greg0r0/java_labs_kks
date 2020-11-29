@@ -121,6 +121,7 @@ public class BinaryTree<TKeyType extends Comparable<TKeyType>, TDataType>
 
     public void clear(){
         this.head = null;
+        this.len = 0;
     }
 
     //DEBUG
