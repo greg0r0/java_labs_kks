@@ -4,7 +4,7 @@ import java.lang.reflect.Method;
 
 public class BinaryTreeTestSuite {
     public static void Run() {
-        Method[] tests = lab4_binary_tree.BinaryTreeTestSuite.class.getMethods();
+        Method[] tests = BinaryTreeTestSuite.class.getMethods();
         int succ_test = 0;
         int tests_num = 0;
         for (Method test : tests) {
@@ -26,12 +26,22 @@ public class BinaryTreeTestSuite {
         }
         System.out.println(String.format("Amount of tests: %d  Passage: %.2f%%\n", tests_num, ((double) succ_test / tests_num) * 100));
     }
-//тесты выгоядят отвратно, нужно продумать дизайн.
-//some tests here
-// public static boolean TestConstructor(){
-//     LListNode<Integer> a = new LListNode<Integer>(1, null);
-//     LListNode<Integer> b = new LListNode<Integer>(2, null);
-//     LList<Integer> lst = new LList<Integer>(a,b,2);
-//     return (lst.getLength() == 2);
-// }
+
+    public static boolean TestConstructor() {
+        try {
+            BinaryTree<Integer, Integer> bintree = new BinaryTree<>();
+            assert bintree.getLen() == 0;
+
+            BinaryTree<Integer, Integer> bintree1 = new BinaryTree<>(10,10);
+            assert bintree1.getLen() == 1;
+
+            BinaryTree<Integer, Integer> bintree2 = new BinaryTree<>(bintree1);
+            bintree2.insert(11,11);
+            assert bintree2.getLen() == 2;
+
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
 }
