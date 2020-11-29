@@ -2,6 +2,7 @@ package lab3_vector;
 
 import lab3_vector.*;
 
+@SuppressWarnings("unchecked")
 public class Vector<T>{
     //our main array
     private T[] arr;
@@ -108,6 +109,17 @@ public class Vector<T>{
         len--;
     }
 
+    //delete by value (first found would be deleted)
+    public void deleteByValue(T value) throws Exception{
+        for (int i = 0; i < len-1; i++){
+            if (this.arr[i] == value){
+                delete(i);
+                return;
+            }
+        }
+        throw new Exception("Error: Value not found (method deleteByValue)");
+    }
+
     public void clear(){
          //lol just can't call Vector()
         this.arr = (T[])new Object[1];
@@ -116,13 +128,14 @@ public class Vector<T>{
     }
 
     //method for debug
-    public void printrope(){
+    @Override
+    public String toString(){
+        String res = " ";
         for (int i = 0; i < this.len; i++)
         {
-            System.out.print(this.arr[i]);
-            System.out.print(" ");
+            res+=(this.arr[i]+" ");
         }
-        System.out.println();
+        return res;
     }
 
 
