@@ -89,33 +89,4 @@ public class VectorTestSuite
         vec.clear();
         return (vec.getCapacity() == 1);
     }
-
-    public static boolean TestCatClassDeletion(){
-        lab3_vector.Cat a = new Cat("Cat1", 1);
-        lab3_vector.Cat b = new Cat("Cat2", 2);
-        lab3_vector.Cat bb = new Cat(b);
-        lab3_vector.Cat c = new Cat("Cat3", 3);
-        lab3_vector.Cat d = new Cat("InsertedCat", 10);
-
-        lab3_vector.Vector<lab3_vector.Cat> lst = new lab3_vector.Vector<>();
-        lst.push(a);
-        lst.push(b);
-        lst.push(bb);
-        lst.push(c);
-        try {
-            lst.insert(d, 1);
-        } catch (Exception ex) {
-
-        }
-        try {
-            lst.deleteByValue(b);
-        } catch (Exception ex) {
-
-        }
-        try{
-            return (lst.getLen() == 4 && lst.get(1) == d);
-        } catch (Exception ex) {
-            return false;
-        }
-    }
 }
