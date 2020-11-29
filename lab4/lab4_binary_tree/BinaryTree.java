@@ -115,6 +115,15 @@ public class BinaryTree<TKeyType extends Comparable<TKeyType>, TDataType>
         }
     }
 
+    public int getLen(){
+        return this.len;
+    }
+
+    public void clear(){
+        this.head = null;
+    }
+
+    //DEBUG
     private void print(BinaryTreeNode<TKeyType, TDataType> node, int depth){
         if (node.right != null){
             print(node.right, depth+1);
