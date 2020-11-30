@@ -13,9 +13,8 @@ class Program{
 
     public static void main(String[] args)
     {
-        Integer[] arr = {123,12,3,123,4,125,124,3411,34,3467,3,513,1,55,2,51,41,33,21};
-        BaseSortAlgs.<Integer>sort_selection(arr);
-        print_arr(arr);
+        BaseSortAlgsTestSuite tests = new BaseSortAlgsTestSuite();
+        tests.Run();
     }
 
 }
