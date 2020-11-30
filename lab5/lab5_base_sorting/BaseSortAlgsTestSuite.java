@@ -50,9 +50,10 @@ public class BaseSortAlgsTestSuite {
     }
     private static Integer[] gen_arr(){
         Random rnd = new Random();
-        Integer[] arr = new Integer[100000];
-        for (int i = 0; i < 100000; i++){
-            arr[i] = rnd.nextInt(20000);
+        int len = 100000;
+        Integer[] arr = new Integer[len];
+        for (int i = 0; i < len; i++){
+            arr[i] = rnd.nextInt(len);
         }
         return arr;
     }
@@ -84,19 +85,22 @@ public class BaseSortAlgsTestSuite {
     public static boolean TestRangeBubleSort()
     {
         Integer[] local_copy = BaseSortAlgsTestSuite.arr.clone();
-
+        BaseSortAlgs.sort_buble_range(local_copy, 0, local_copy.length);
+        BaseSortAlgs.sort_buble_range(local_copy, local_copy.length/2, local_copy.length);
         return check_order(local_copy);
     }
     public static boolean TestRangeInsertSort()
     {
         Integer[] local_copy = BaseSortAlgsTestSuite.arr.clone();
-
+        BaseSortAlgs.sort_insert_range(local_copy, 0, local_copy.length);
+        BaseSortAlgs.sort_insert_range(local_copy, local_copy.length/2, local_copy.length);
         return check_order(local_copy);
     }
     public static boolean TestRangeSelectionSort()
     {
         Integer[] local_copy = BaseSortAlgsTestSuite.arr.clone();
-
+        BaseSortAlgs.sort_selection_range(local_copy, 0, local_copy.length);
+        BaseSortAlgs.sort_selection_range(local_copy, local_copy.length/2, local_copy.length);
         return check_order(local_copy);
     }
 
