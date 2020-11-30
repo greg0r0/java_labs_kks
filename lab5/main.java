@@ -1,8 +1,6 @@
 
 import lab5_base_sorting.*;
 
-import java.awt.*;
-
 class Program{
 
     public static void print_arr(Integer[] c){

@@ -48,9 +48,21 @@ public class BaseSortAlgsTestSuite {
 
        return true;
     }
+
+    private static <T extends Comparable<T>> boolean check_order(T arr[], int left, int right){
+
+        for (int i = left+1; i < right; i++){
+            if (arr[i-1].compareTo(arr[i]) > 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private static Integer[] gen_arr(){
         Random rnd = new Random();
-        int len = 100000;
+        int len = 10000;
         Integer[] arr = new Integer[len];
         for (int i = 0; i < len; i++){
             arr[i] = rnd.nextInt(len);
@@ -85,23 +97,23 @@ public class BaseSortAlgsTestSuite {
     public static boolean TestRangeBubleSort()
     {
         Integer[] local_copy = BaseSortAlgsTestSuite.arr.clone();
-        BaseSortAlgs.sort_buble_range(local_copy, 0, local_copy.length);
+        BaseSortAlgs.sort_buble_range(local_copy, 0, local_copy.length/2);
         BaseSortAlgs.sort_buble_range(local_copy, local_copy.length/2, local_copy.length);
-        return check_order(local_copy);
+        return check_order(local_copy, 0, local_copy.length/2) && check_order(local_copy, local_copy.length/2, local_copy.length);
     }
     public static boolean TestRangeInsertSort()
     {
         Integer[] local_copy = BaseSortAlgsTestSuite.arr.clone();
-        BaseSortAlgs.sort_insert_range(local_copy, 0, local_copy.length);
+        BaseSortAlgs.sort_insert_range(local_copy, 0, local_copy.length/2);
         BaseSortAlgs.sort_insert_range(local_copy, local_copy.length/2, local_copy.length);
-        return check_order(local_copy);
+        return check_order(local_copy, 0, local_copy.length/2) && check_order(local_copy, local_copy.length/2, local_copy.length);
     }
     public static boolean TestRangeSelectionSort()
     {
         Integer[] local_copy = BaseSortAlgsTestSuite.arr.clone();
-        BaseSortAlgs.sort_selection_range(local_copy, 0, local_copy.length);
+        BaseSortAlgs.sort_selection_range(local_copy, 0, local_copy.length/2);
         BaseSortAlgs.sort_selection_range(local_copy, local_copy.length/2, local_copy.length);
-        return check_order(local_copy);
+        return check_order(local_copy, 0, local_copy.length/2) && check_order(local_copy, local_copy.length/2, local_copy.length);
     }
 
 }
