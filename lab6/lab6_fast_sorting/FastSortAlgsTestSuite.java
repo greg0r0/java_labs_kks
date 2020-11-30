@@ -62,7 +62,7 @@ public class FastSortAlgsTestSuite {
 
     private static Integer[] gen_arr(){
         Random rnd = new Random();
-        int len = 100000;
+        int len = 10000000;
         Integer[] arr = new Integer[len];
         for (int i = 0; i < len; i++){
             arr[i] = rnd.nextInt(len);
@@ -86,6 +86,13 @@ public class FastSortAlgsTestSuite {
         Integer[] local_copy = FastSortAlgsTestSuite.arr.clone();
         FastSortAlgs.qsort(local_copy,0, local_copy.length/2);
         return check_order(local_copy, 0, local_copy.length/2);
+    }
+
+    public static boolean TestHeapSort()
+    {
+        Integer[] local_copy = FastSortAlgsTestSuite.arr.clone();
+        FastSortAlgs.heap_sort(local_copy);
+        return check_order(local_copy);
     }
 
    
