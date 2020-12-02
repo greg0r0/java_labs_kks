@@ -38,14 +38,18 @@ public class FastSortAlgs{
         }
     }
 
-    public static <T extends Comparable<T>> void heap_sort(T arr[]){
-        int n= arr.length-1;
-        for (int i = n/2; i >=0; i--)
+    public static <T extends Comparable<T>> void heap_sort(T arr[]) {
+        heap_sort_range(arr, 0, arr.length);
+    }
+
+    public static <T extends Comparable<T>> void heap_sort_range(T arr[], int left, int right){
+        int n= right-1;
+        for (int i = n/2; i >=left; i--)
             heap_rebalance(arr, i, n);
-        for (int i = n; i >= 0; i--){
+        for (int i = n; i >= left; i--){
             //swap
-            T t = arr[0];
-            arr[0] = arr[n];
+            T t = arr[left];
+            arr[left] = arr[n];
             arr[n] = t;
             n--;
             heap_rebalance(arr, 0, n);
