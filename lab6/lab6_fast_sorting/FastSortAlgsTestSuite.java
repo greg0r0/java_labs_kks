@@ -94,6 +94,18 @@ public class FastSortAlgsTestSuite {
         FastSortAlgs.heap_sort(local_copy);
         return check_order(local_copy);
     }
+    public static boolean TestHeapSortRanged()
+    {
+        Integer[] local_copy = FastSortAlgsTestSuite.arr.clone();
+        FastSortAlgs.heap_sort_range(local_copy,0, local_copy.length/2);
+        return check_order(local_copy,0,local_copy.length/2);
+    }
+
+    public static boolean TestMergeSort(){
+        Integer[] local_copy = FastSortAlgsTestSuite.arr.clone();
+        local_copy = FastSortAlgs.merge_sort(local_copy);
+        return check_order(local_copy);
+    }
 
    
 }

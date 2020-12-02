@@ -1,6 +1,9 @@
 
 import lab6_fast_sorting.*;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 class Program{
 
     public static void print_arr(Integer[] c){
@@ -9,16 +12,22 @@ class Program{
         }
         System.out.println();
     }
+    private static <T extends Comparable<T>> boolean check_order(T arr[], int left, int right){
+
+        for (int i = left+1; i < right; i++){
+            if (arr[i-1].compareTo(arr[i]) > 0){
+                return false;
+            }
+        }
+
+        return true;
+    }
 
 
-
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         FastSortAlgsTestSuite tests = new FastSortAlgsTestSuite();
         tests.Run();
-//        Integer[] a = {8,9,3,2,4,1,201,234,234,42,34,12,3,4,23,4,43,4,5,6,4563,345,345,234};
-//        print_arr(a);
-//        print_arr(a);
     }
 
 }
+                                            
