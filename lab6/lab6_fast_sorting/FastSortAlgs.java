@@ -75,4 +75,40 @@ public class FastSortAlgs{
             heap_rebalance(arr, largest_el, size);
         }
     }
+
+
+    public static Integer[] merge_sort(Integer[] arr){
+        if (arr.length < 2)
+            return arr;
+        int mid = arr.length / 2;
+        //переписать все из T[] к Integer[]
+        //когда берешь индекс - приводишь к T
+        Integer[] arr_left = new Integer[mid]; //Arrays.copyOfRange(arr, 0, mid);
+        System.arraycopy(arr,0,arr_left,0, mid );
+        Integer[] arr_right =  new Integer[arr.length - mid]; // Arrays.copyOfRange(arr,  mid, arr.length);
+        System.arraycopy(arr,mid,arr_right,0, arr.length - mid );
+        return merge_op(merge_sort(arr_left), merge_sort(arr_right));
+    }
+
+    private static Integer[] merge_op(Integer[] arr1, Integer[] arr2){
+        Integer[] buf = new Integer[arr1.length+arr2.length];
+
+        int i_up = 0;
+        int i_down = 0;
+
+        for (int i =0; i < buf.length; i++){
+            if (i_up == arr1.length){
+                buf[i] = arr2[i_down++];
+            } else if (i_down == arr2.length) {
+                buf[i] = arr1[i_up++];
+            } else {
+                if ( arr1[i_up].compareTo(arr2[i_down]) < 0) {
+                    buf[i] = arr1[i_up++];
+                } else {
+                    buf[i] = arr2[i_down++];
+                }
+            }
+        }
+        return buf;
+    }
 }
