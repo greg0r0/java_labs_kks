@@ -25,12 +25,15 @@ public class RadixSorts {
     }
 
     private static void sortByDigit(ArrayList<Integer> arr, int n, ArrayList<Integer> res_arr) {
-        if (arr.size() == 0 || n == 0) {
+        if (arr.size() == 0) {
             return;
         }
-        //разобраться почему некоторые элементы удваиваются (добавляются дважды)
-        if (arr.size() == 1){
-            res_arr.add(arr.get(0));
+        //TODO: разобраться почему некоторые элементы пропадают
+        if (n == 0){
+            for (Integer el : arr){
+                res_arr.add(el);
+            }
+            return;
         }
         ArrayList<ArrayList<Integer>> digits_arrays = new ArrayList<>(10);
         for (int i = 0; i <= 9; i++) {
@@ -43,10 +46,11 @@ public class RadixSorts {
             digits_arrays.get(num).add(c);
         }
         //имеем digits_arrays с отсортированными по цифрам числами.
-        for (ArrayList<Integer> subarr: digits_arrays){
-            sortByDigit(subarr, n-1, res_arr);
-            //System.out.println(subarr);
-        }
         //System.out.println(digits_arrays);
+        for (ArrayList<Integer> subarr: digits_arrays){
+            //System.out.println(subarr + "<- subarr");
+            sortByDigit(subarr, n-1, res_arr);
+        }
+        //System.out.println(digits_arrays + "<- digits arr for n=" + n);
     }
 }
