@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public class RadixSorts {
 
+    //get max digits len
     public static int getMaxLen(Integer[] arr){
-        //get max digits count
         int max = 0;
         for (int i : arr) {
 
@@ -93,8 +93,8 @@ public class RadixSorts {
         }
 
         for (int c : arr) {
-            int del = (int) Math.floor(Math.pow(10.0, (double) (n - 1)));
-            int num = (c / del) % 10;
+            int num = getDigit(c,n);
+
             digits_arrays.get(num).add(c);
         }
 
