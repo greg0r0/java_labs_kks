@@ -1,6 +1,8 @@
 package lab8_linked_list_iterator;
 
-public class LList<T>{
+import java.util.Iterator;
+
+public class LList<T> implements Iterable<T>{
 
     private LListNode<T> first_element;
     private LListNode<T> last_element;
@@ -141,4 +143,27 @@ public class LList<T>{
         out(first_element);
     }
 
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+
+            private LListNode<T> current = first_element;
+
+            @Override
+            public boolean hasNext() {
+                return (current != null);
+            }
+
+            @Override
+            public T next() {
+                if (hasNext()) {
+                    T data = current.getData();
+                    current = current.getNextNode();
+                    return data;
+                }
+                return null;
+            }
+        };
+    }
 }
