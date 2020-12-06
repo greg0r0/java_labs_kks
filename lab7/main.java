@@ -1,18 +1,25 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
+
 import lab7_radix_sorts.*;
 
+
 class Program {
+    public static Integer[] toIntArr(ArrayList<Integer> arrlist){
+        Integer[] res = new Integer[arrlist.size()];
+        for (int i = 0; i < res.length; i++){
+            res[i] = arrlist.get(i);
+        }
+        return res;
+    }
+
 
     public static void main(String[] args) {
-        ArrayList<Integer> arr = new ArrayList<>();
-        Random rnd = new Random();
-        for (int i = 0; i < 10; i++){
-            arr.add(rnd.nextInt(1000));
-        }
-        System.out.println(arr);
-        RadixSorts.sort_msd(arr);
-        System.out.println(arr);
+
+        RadixSortsTestSuite tests = new RadixSortsTestSuite();
+        tests.Run();
+
     }
 }
 
