@@ -1,6 +1,7 @@
 package lab8_linked_list_iterator;
 
 import java.lang.reflect.Method;
+import java.util.Iterator;
 
 public class LListTestSuite
 {
@@ -28,6 +29,26 @@ public class LListTestSuite
         }
         System.out.println(String.format("Amount of tests: %d  Passage: %.2f%%", tests_num, ((double)succ_test/tests_num)*100));
     }
+
+    public static boolean TestSimple(){
+        try {
+            int[] arr = {122, 123, 124, 125, 126};
+            int i = 0;
+            LList<Integer> lst = new LList<>(new LListNode<Integer>(122, null), null, 1);
+            lst.addLastNode(new LListNode<Integer>(123, null));
+            lst.addLastNode(new LListNode<Integer>(124, null));
+            lst.addLastNode(new LListNode<Integer>(125, null));
+            lst.addLastNode(new LListNode<Integer>(126, null));
+            Iterator<Integer> iter = lst.iterator();
+            while (iter.hasNext()) {
+                assert iter.next() == arr[i++];
+            }
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+    
     
     
 }
